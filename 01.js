@@ -7,10 +7,7 @@ fs.readFile("/tmp/input.txt", "utf8", (err, data) => {
         .split("\n")
         .reduce(
           (a, b) =>
-            b === ""
-              ? a
-              : a +
-                (b[0] === "-" ? -parseInt(b.slice(1)) : parseInt(b.slice(1))),
+            !b ? a : a + parseInt(b.slice(1)) * (/-/.test(b) ? -1 : 1),
           0
         )
     );
