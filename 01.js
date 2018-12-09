@@ -5,11 +5,8 @@ fs.readFile("/tmp/input.txt", "utf8", (err, data) => {
     console.log(
       data
         .split("\n")
-        .reduce(
-          (a, b) =>
-            !b ? a : a + parseInt(b.slice(1)) * (/-/.test(b) ? -1 : 1),
-          0
-        )
+        .map(Number)
+        .reduce((a, b) => a + b, 0)
     );
   }
 });
